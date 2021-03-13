@@ -10,8 +10,10 @@ namespace ExamenIngresoGlobalCitizen
         {
             TiendaRopa tiendaRopa = new TiendaRopa();
             Vendedor vendedor = new Vendedor();
-            
 
+            int newValue;
+            string respuesta;
+            bool flag;
             while (true)
             {
                 Console.WriteLine("---------------------------------------\n"+
@@ -22,7 +24,7 @@ namespace ExamenIngresoGlobalCitizen
 
                 Console.WriteLine("Nombre: " + (vendedor.Nombre ?? "") +
                                   "\nApellido: " + (vendedor.Apellido ?? "") + 
-                                  "\nCódigo Vendedor: " + (vendedor.CodigoVendedor.ToString() ?? "") +
+                                  "\nCódigo Vendedor: " + (vendedor.CodigoVendedor ?? "") +
                                   "\n---------------------------------------\n");
 
 
@@ -35,23 +37,28 @@ namespace ExamenIngresoGlobalCitizen
                                   "2) Datos del Vendedor \n" +
                                   "3) Salir"
                     );
-                    int respuesta = int.Parse(Console.ReadLine());
-                    switch (respuesta)
+                    respuesta = Console.ReadLine();
+                    flag = int.TryParse(respuesta, out newValue);
+
+                    if (flag)
                     {
-                        case 1:
-                            tiendaRopa.InicialiarDatosTienda();
-                            break;
+                        switch (newValue)
+                        {
+                            case 1:
+                                tiendaRopa.InicialiarDatosTienda();
+                                break;
 
-                        case 2:
-                            vendedor.InicializarDatos();
-                            break;
+                            case 2:
+                                vendedor.InicializarDatos();
+                                break;
 
-                        case 3:
-                            Environment.Exit(1);
-                            break;
+                            case 3:
+                                Environment.Exit(1);
+                                break;
 
-                        default:
-                            break;
+                            default:
+                                break;
+                        }
                     }
                 }
                 else
@@ -62,34 +69,40 @@ namespace ExamenIngresoGlobalCitizen
                                   "4) Historial Cotizaciones \n" +
                                   "5) Salir"
                     );
-                    int respuesta = int.Parse(Console.ReadLine());
-                    switch (respuesta)
+                   
+                    respuesta = Console.ReadLine();
+                    flag = int.TryParse(respuesta, out newValue);
+
+                    if (flag)
                     {
-                        case 1:
-                            tiendaRopa.InicialiarDatosTienda();
-                            break;
+                        switch (newValue)
+                        {
+                            case 1:
+                                tiendaRopa.InicialiarDatosTienda();
+                                break;
 
-                        case 2:
-                            vendedor.InicializarDatos();
-                            break;
+                            case 2:
+                                vendedor.InicializarDatos();
+                                break;
 
-                        case 3:
-                            vendedor.CrearCotizacion();
-                            break;
+                            case 3:
+                                vendedor.CrearCotizacion();
+                                break;
 
-                        case 4:
-                            if (vendedor.HistorialCotizaciones != null)
-                                vendedor.MostrarHistorial();
-                            else
-                                Console.WriteLine("No hay historial para mostrar...");
-                            break;
+                            case 4:
+                                if (vendedor.HistorialCotizaciones.Count != 0)
+                                    vendedor.MostrarHistorial();
+                                else
+                                    Console.WriteLine("No hay historial para mostrar...");
+                                break;
 
-                        case 5:
-                            Environment.Exit(1);
-                            break;
+                            case 5:
+                                Environment.Exit(1);
+                                break;
 
-                        default:
-                            break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }

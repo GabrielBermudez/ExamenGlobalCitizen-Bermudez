@@ -10,7 +10,7 @@ namespace ExamenIngresoGlobalCitizen.ParteA
     {
         private String nombre;
         private String apellido;
-        private long codigoVendedor;
+        private String codigoVendedor;
         private List<Cotizacion> historialCotizaciones;
         private TiendaRopa tiendaDeRopa = new TiendaRopa();
 
@@ -30,22 +30,32 @@ namespace ExamenIngresoGlobalCitizen.ParteA
 
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
-        public long CodigoVendedor { get => codigoVendedor; set => codigoVendedor = value; }
+        public string CodigoVendedor { get => codigoVendedor; set => codigoVendedor = value; }
         internal List<Cotizacion> HistorialCotizaciones { get => historialCotizaciones; set => historialCotizaciones = value; }
         internal TiendaRopa TiendaDeRopa { get => tiendaDeRopa; set => tiendaDeRopa = value; }
 
 
     public void InicializarDatos()
         {
-            Console.Write("Por favor ingrese su nombre: ");
-            Nombre = Console.ReadLine();
+            int newValue;
+            bool bandera = false;
+            while (!bandera)
+            {
+                Console.Write("Por favor ingrese su nombre: ");
+                Nombre = Console.ReadLine();
 
-            Console.Write("Por favor ingrese su apellido: ");
-            Apellido = Console.ReadLine();
+                Console.Write("Por favor ingrese su apellido: ");
+                Apellido = Console.ReadLine();
 
-            Console.Write("Por favor ingrese su codigo de vendedor: ");
-            CodigoVendedor = long.Parse(Console.ReadLine());
-  
+                Console.Write("Por favor ingrese su codigo de vendedor: ");
+                CodigoVendedor = Console.ReadLine();
+
+                bandera = int.TryParse(CodigoVendedor, out newValue);
+                if (!bandera)
+                    Console.WriteLine("El codigo del vendedor debe ser un numero entero");
+            }
+            
+            
         }
 
         public void CrearCotizacion()
@@ -83,7 +93,7 @@ namespace ExamenIngresoGlobalCitizen.ParteA
 
         public void MostrarHistorial()
         {
-            Console.WriteLine("Numero de Identificacion | \t Fecha-Hora\t |  Codigo del Vendedor  |  Prenda Cotizada |  Cantidad  | Resultado Cotización");
+            Console.WriteLine("Numero de Identificacion | \t Fecha-Hora\t |  Codigo del Vendedor  |  Prenda Cotizada |\t\t  Cantidad  | Resultado Cotización");
 
             foreach (var cotizacion in historialCotizaciones)
             {
@@ -100,7 +110,9 @@ namespace ExamenIngresoGlobalCitizen.ParteA
         public Pantalon MostrarPantalones()
         {
             int aux = 0;
-            int seleccion = 0;
+            string seleccion;
+            int newValue;
+            bool bandera;
             Console.WriteLine("Seleccione el pantalón que desea cotizar: \n" +
                 "Tipo de Pantalon   |    Precio   |   Cantidad  |  Calidad");
             foreach (var pantalon in TiendaDeRopa.ListaPantalones)
@@ -110,19 +122,34 @@ namespace ExamenIngresoGlobalCitizen.ParteA
                 aux++;
             }
             Console.WriteLine((aux + 1) + ") Salir");
-              seleccion = int.Parse(Console.ReadLine());
-            if (seleccion == aux + 1)
-                return null;
+            seleccion = Console.ReadLine();
+            bandera = int.TryParse(seleccion, out newValue);
+            if (bandera)
+            {
+                if (newValue == aux + 1)
+                    return null;
+                if (newValue <= 0 || newValue > aux + 1)
+                {
+                    MostrarPantalones();
+                }
+                else
+                {
+                    return TiendaDeRopa.ListaPantalones[newValue - 1];
+                }
 
-            return TiendaDeRopa.ListaPantalones[seleccion-1];
+            }
+            Console.WriteLine("Asegurese de ingresar numeros enteros...");
+            return null;
 
-           
+
         }
 
         public Camisa MostrarCamisas()
         {
             int aux = 0;
-            int seleccion = 0;
+            string seleccion;
+            int newValue;
+            bool bandera;
             Console.WriteLine("Seleccione la camisa que desea cotizar: \n" +
                 "Tipo de Camisa   |    Precio   |   Cantidad  |  Calidad | Cuello Mao");
             foreach (var camisa in TiendaDeRopa.ListaCamisas)
@@ -132,11 +159,24 @@ namespace ExamenIngresoGlobalCitizen.ParteA
                 aux++;
             }
             Console.WriteLine((aux + 1) + ") Salir");
-            seleccion = int.Parse(Console.ReadLine());
-            if (seleccion == aux + 1)
-                return null;
+            seleccion = Console.ReadLine();
+            bandera = int.TryParse(seleccion, out newValue);
+            if (bandera)
+            {
+                if (newValue == aux + 1)
+                    return null;
+                if (newValue <= 0 || newValue > aux + 1)
+                {
+                    MostrarCamisas();
+                }
+                else
+                {
+                    return TiendaDeRopa.ListaCamisas[newValue - 1];
+                }
 
-            return TiendaDeRopa.ListaCamisas[seleccion-1];
+            }
+            Console.WriteLine("Asegurese de ingresar numeros enteros...");
+            return null;
         }
 
         public void CotizacionPantalones(Pantalon pantalon, Cotizacion cotizacion)
@@ -169,6 +209,7 @@ namespace ExamenIngresoGlobalCitizen.ParteA
 
         public void CotizacionCamisas(Camisa camisa, Cotizacion cotizacion)
         {
+            bool flag = true;
             Console.Write("Ingrese la cantidad de unidades a cotizar: ");
             cotizacion.Cantidad = int.Parse(Console.ReadLine());
 
@@ -176,7 +217,10 @@ namespace ExamenIngresoGlobalCitizen.ParteA
             {
                 if (item == camisa)
                 {
-                    item.CantidadUnidades -= cotizacion.Cantidad;
+                    if (item.CantidadUnidades - cotizacion.Cantidad >= 0)
+                        item.CantidadUnidades -= cotizacion.Cantidad;
+                    else
+                        flag = false;
                     break;
                 }
             }
@@ -185,7 +229,10 @@ namespace ExamenIngresoGlobalCitizen.ParteA
 
             cotizacion.ResultadoCotizacion = cotizacion.Cantidad * cotizacion.PrecioPrenda;
 
-            historialCotizaciones.Add(cotizacion);
+            if (flag)
+                historialCotizaciones.Add(cotizacion);
+            else
+                Console.WriteLine("No se pudo generar la cotización por falta de stock");
         }
     }
 }
