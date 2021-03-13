@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "wfYOpY8jOUhylVJUDhTpXsr2OKOBJM8xt3Xla2Y1xSPFNHqD2uzWM7udyXUdaKoveatu6ENpHn9YvRcw6ExuUg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Gabriel\\source\\repos\\ExamenIngresoGlobalCitizen\\ExamenIngresoGlobalCitizen.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Gabriel\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Gabriel\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

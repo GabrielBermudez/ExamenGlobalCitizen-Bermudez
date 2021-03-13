@@ -1,0 +1,13 @@
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\bin\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.exe
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\bin\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.deps.json
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\bin\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.runtimeconfig.json
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\bin\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.runtimeconfig.dev.json
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\bin\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.dll
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\bin\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.pdb
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\obj\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.csprojAssemblyReference.cache
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\obj\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.AssemblyInfoInputs.cache
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\obj\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.AssemblyInfo.cs
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\obj\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.csproj.CoreCompileInputs.cache
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\obj\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.dll
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\obj\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.pdb
+C:\Users\Gabriel\source\repos\ExamenIngresoGlobalCitizen\obj\Debug\netcoreapp3.1\ExamenIngresoGlobalCitizen.genruntimeconfig.cache
